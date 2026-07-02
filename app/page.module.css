@@ -42,6 +42,13 @@
   color: var(--ink-dim);
 }
 
+.honestyNote {
+  margin-top: 10px;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--ink-dim);
+}
+
 .result {
   width: 100%;
   max-width: 560px;
@@ -52,4 +59,19 @@
   color: var(--ink-dim);
   font-size: 14px;
   text-align: center;
+}
+
+.retryButton {
+  margin-top: 14px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--brass-dim);
+  background: var(--bg-panel-raised);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.retryButton:hover {
+  border-color: var(--brass);
 }
