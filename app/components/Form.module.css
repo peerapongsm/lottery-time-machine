@@ -1,0 +1,339 @@
+.form {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel {
+  border: 1px solid var(--brass-dim);
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--bg-panel-raised), var(--bg-panel));
+  padding: 20px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.legend {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass);
+  padding: 0 6px;
+}
+
+/* --- digit odometer --- */
+
+.digitRow {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.digitBox {
+  width: 15%;
+  max-width: 52px;
+  aspect-ratio: 3 / 4;
+  text-align: center;
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(1.2rem, 5.5vw, 1.7rem);
+  font-weight: 600;
+  color: var(--brass-bright);
+  background: #0d0a06;
+  border: 1px solid var(--brass-dim);
+  border-radius: 8px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.digitBox:focus {
+  outline: none;
+  border-color: var(--brass-bright);
+  box-shadow: 0 0 0 4px var(--ring), inset 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.birthdayRow {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.birthdayPicker {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dateInput {
+  background: #0d0a06;
+  border: 1px solid var(--brass-dim);
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: var(--ink);
+}
+
+/* --- generic buttons (never bare links) --- */
+
+.ghostButton,
+.smallButton,
+.stepButton {
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--brass-dim);
+  border-radius: 8px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.05s;
+}
+
+.ghostButton {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+.smallButton {
+  padding: 8px 14px;
+  font-size: 13px;
+  color: var(--brass-bright);
+}
+
+.ghostButton:hover,
+.smallButton:hover,
+.stepButton:hover {
+  border-color: var(--brass);
+  background: var(--bg-panel);
+}
+
+.ghostButton:active,
+.smallButton:active,
+.stepButton:active {
+  transform: translateY(1px);
+}
+
+/* --- purchase pattern --- */
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-top: 14px;
+}
+
+@media (min-width: 480px) {
+  .grid2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.grid2 .field {
+  margin-top: 0;
+}
+
+.label {
+  font-size: 13px;
+  color: var(--ink-dim);
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stepButton {
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  line-height: 1;
+  flex: none;
+}
+
+.numberInput {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  background: #0d0a06;
+  border: 1px solid var(--brass-dim);
+  border-radius: 8px;
+  padding: 8px;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
+
+.range {
+  width: 100%;
+}
+
+.rangeReadout {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  color: var(--brass-bright);
+  font-size: 15px;
+}
+
+.select {
+  background: #0d0a06;
+  border: 1px solid var(--brass-dim);
+  border-radius: 8px;
+  padding: 10px;
+  color: var(--ink);
+}
+
+.summary {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--brass-dim);
+  font-size: 13px;
+  color: var(--ink-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.error {
+  color: var(--danger);
+  font-size: 12px;
+}
+
+/* --- underground (illegal) section --- */
+
+.dangerPanel {
+  border: 1px solid var(--danger-border);
+  border-radius: 16px;
+  background: var(--danger-bg);
+  overflow: hidden;
+}
+
+.dangerToggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  padding: 18px 20px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--danger);
+}
+
+.chevron {
+  transition: transform 0.15s;
+}
+
+.chevron[data-open="true"] {
+  transform: rotate(180deg);
+}
+
+.dangerBody {
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.caveat {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #e8a99f;
+  border: 1px solid var(--danger-border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: rgba(209, 89, 74, 0.08);
+}
+
+.ugRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--danger-border);
+}
+
+.ugRow:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.ugEnable {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.ugDigits {
+  width: 100%;
+  max-width: 140px;
+  text-align: center;
+  letter-spacing: 0.3em;
+  background: #0d0a06;
+  border: 1px solid var(--danger-border);
+  border-radius: 8px;
+  padding: 8px;
+  color: var(--ink);
+  font-family: var(--font-display);
+}
+
+.ugDigits:disabled,
+.ugNumber:disabled {
+  opacity: 0.4;
+}
+
+.ugSubfield {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--ink-dim);
+}
+
+.ugNumber {
+  width: 90px;
+  background: #0d0a06;
+  border: 1px solid var(--danger-border);
+  border-radius: 8px;
+  padding: 6px 8px;
+  color: var(--ink);
+}
+
+/* --- submit --- */
+
+.startButton {
+  align-self: center;
+  padding: 16px 40px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #201404;
+  background: linear-gradient(180deg, var(--brass-bright), var(--brass));
+  box-shadow: 0 10px 30px rgba(212, 169, 74, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: transform 0.05s, box-shadow 0.15s;
+}
+
+.startButton:hover {
+  box-shadow: 0 14px 34px rgba(212, 169, 74, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.startButton:active {
+  transform: translateY(1px);
+}
