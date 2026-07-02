@@ -21,13 +21,31 @@ describe("checkTicket (full era)", () => {
   });
   it("near win", () => expect(checkTicket("123455", full).map(h => h.tier)).toContain("near"));
   it("last2 only", () => {
-    const hits = checkTicket("999956", full);
+    // ticket avoids "999" prefix (front3's second number) so only last2 hits
+    const hits = checkTicket("000056", full);
     expect(hits.map(h => h.tier)).toEqual(["last2"]);
     expect(hits[0].amount).toBe(2_000);
   });
   it("front3 matches FIRST 3 digits only", () => {
-    expect(checkTicket("999000", full).map(h => h.tier)).toEqual([]);
+    // NOTE: front3/last3 are each drawn as TWO independent winning numbers;
+    // a ticket matching either one pays. The plan's original expectation of
+    // [] here was wrong — controller-approved correction to domain semantics.
+    const hits999000 = checkTicket("999000", full);
+    expect(hits999000.map(h => h.tier)).toContain("front3"); // "999" is front3's second number
+    expect(hits999000.map(h => h.tier)).not.toContain("last3"); // "000" not in ["456","888"]
+    expect(hits999000.map(h => h.tier)).not.toContain("last2"); // "00" !== "56"
+
     expect(checkTicket("999111", { ...full, front3: ["999"] }).map(h => h.tier)).toContain("front3");
+
+    // position sensitivity: a ticket whose LAST 3 digits equal a front3
+    // number must not accidentally hit front3 (front3 only checks the
+    // FIRST 3 digits).
+    expect(
+      checkTicket("111999", { ...full, front3: ["999"], last3: ["777", "888"], last2: "12" }).map(h => h.tier)
+    ).toEqual([]);
+  });
+  it("last3 second element also pays", () => {
+    expect(checkTicket("000888", full).map(h => h.tier)).toEqual(["last3"]);
   });
   it("total miss", () => expect(checkTicket("777770", full)).toEqual([]));
 });

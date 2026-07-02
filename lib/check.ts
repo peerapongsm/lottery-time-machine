@@ -21,8 +21,8 @@ export function checkTicket(num: string, draw: Draw): Hit[] {
   add("third", (draw.third ?? []).includes(num));
   add("fourth", (draw.fourth ?? []).includes(num));
   add("fifth", (draw.fifth ?? []).includes(num));
-  add("front3", (draw.front3 ?? [])[0] !== undefined && (draw.front3 ?? [])[0] === num.slice(0, 3));
-  add("last3", (draw.last3 ?? [])[0] !== undefined && (draw.last3 ?? [])[0] === num.slice(3));
+  add("front3", (draw.front3 ?? []).includes(num.slice(0, 3)));
+  add("last3", (draw.last3 ?? []).includes(num.slice(3)));
   add("last2", draw.last2 !== undefined && draw.last2 === num.slice(4));
   return hits;
 }
