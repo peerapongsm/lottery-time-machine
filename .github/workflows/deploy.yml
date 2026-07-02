@@ -1,5 +1,8 @@
 name: deploy
-on: { push: { branches: [main] } }
+# workflow_run needed: refresh-draws pushes with GITHUB_TOKEN, which never fires on:push (recursion guard)
+on:
+  push: { branches: [main] }
+  workflow_run: { workflows: [refresh-draws], types: [completed] }
 permissions: { contents: read, pages: write, id-token: write }
 jobs:
   build:
