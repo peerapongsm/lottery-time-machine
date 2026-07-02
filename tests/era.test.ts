@@ -18,8 +18,8 @@ describe("eraFor", () => {
   it("pre-2015 era has no front3 tier (not introduced until 2015 restructuring)", () => {
     expect(eraFor("2007-06-16").amounts.front3).toBeUndefined();
   });
-  it("pins pre-2015 third-prize amount as documented in config", () => {
-    expect(eraFor("2007-06-16").amounts.third).toBe(80_000);
+  it("pins pre-2015 third-prize amount as documented in config (per-half)", () => {
+    expect(eraFor("2007-06-16").amounts.third).toBe(40_000);
   });
   it("throws for a date before the earliest documented era", () => {
     expect(() => eraFor("1989-12-31")).toThrow();
