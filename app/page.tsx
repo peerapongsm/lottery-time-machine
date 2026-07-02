@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Form from "./components/Form";
 import TimeMachine from "./components/TimeMachine";
 import Verdict from "./components/Verdict";
@@ -71,6 +72,9 @@ export default function Home() {
           จะเจ๊งหรือรวย
         </p>
         <p className={styles.honestyNote}>ผลย้อนหลังทำนายอนาคตไม่ได้ — ทุกงวดสุ่มอิสระ</p>
+        <Link href="/method" className={styles.methodLink}>
+          หลักการคำนวณ
+        </Link>
       </header>
 
       {phase === "form" && <Form onStart={handleStart} />}

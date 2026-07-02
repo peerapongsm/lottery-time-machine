@@ -1,0 +1,23 @@
+{
+  "name": "หวยจำลอง — เครื่องย้อนเวลาซื้อหวย",
+  "short_name": "หวยจำลอง",
+  "description": "ย้อนเวลาไปซื้อหวยเลขเดิมทุกงวดตั้งแต่อดีตจนถึงวันนี้ แล้วดูว่าจะได้หรือเสียเท่าไร",
+  "start_url": "/lottery-time-machine/",
+  "scope": "/lottery-time-machine/",
+  "display": "standalone",
+  "background_color": "#0b0906",
+  "theme_color": "#0b0906",
+  "lang": "th",
+  "icons": [
+    {
+      "src": "/lottery-time-machine/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/lottery-time-machine/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
