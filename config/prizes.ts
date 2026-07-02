@@ -15,11 +15,18 @@ import type { Era } from "../lib/era";
 //     confirmed directly by the actual 16 Jun 2558 draw result showing four
 //     last-3-digit numbers; (c) the 40THB ticket face price documented for
 //     GLO tickets ran from 1987 through the 2017 single-ticket reform.
-//   - near/second/third/fourth/fifth/last2/last3 amounts for the pre-2015
-//     era could NOT be independently verified with a source in this
-//     session, so per the "no fabrication" rule they are copied forward
-//     from the nearest documented (current) era and the whole era is
-//     flagged `approx: true`.
+//   - near/second/third/fourth/fifth/last3 amounts for the pre-2015 era
+//     could NOT be independently verified with a source in this session,
+//     so per the "no fabrication" rule they are copied forward from the
+//     nearest documented (current) era and the whole era is flagged
+//     `approx: true`.
+//   - last2 ("เลขท้าย 2 ตัว") IS independently sourced (not copied): the
+//     official GLO prize table reproduced on English Wikipedia
+//     ("Thai_lottery" article, table titled "Official Prizes for Thai
+//     Government and Thai Charity Lotteries on 1 August 2014 - 16 July
+//     2015" -- i.e. the period immediately before the Aug 2558/2015
+//     restructuring) lists "Match 2 digits (1 time): 10,000 prizes,
+//     Payout 1,000 baht". That is the value used here.
 // ---------------------------------------------------------------------------
 export const ERAS: Era[] = [
   {
@@ -38,7 +45,7 @@ export const ERAS: Era[] = [
     },
     approx: true,
     source:
-      "https://www.thaipbs.or.th/news/content/2063 (first prize 4,000,000฿ pre-2558-restructuring); https://www.bangkokbiznews.com/lifestyle/890738 (40฿ ticket face, 1987-2017); https://lotto.mthai.com/lottery/2989.html (16 Jun 2558 draw shows old 4x last-3-digit format, no front3) -- near/second/third/fourth/fifth/last3/last2 unverified for this span, copied from nearest documented (current) era, approx",
+      "https://www.thaipbs.or.th/news/content/2063 (first prize 4,000,000฿ pre-2558-restructuring); https://www.bangkokbiznews.com/lifestyle/890738 (40฿ ticket face, 1987-2017); https://lotto.mthai.com/lottery/2989.html (16 Jun 2558 draw shows old 4x last-3-digit format, no front3); https://en.wikipedia.org/wiki/Thai_lottery (official GLO prize table for 1 Aug 2014 - 16 Jul 2015, immediately pre-restructuring, lists 'Match 2 digits (1 time): 10,000 prizes, Payout 1,000 baht' for เลขท้าย 2 ตัว -- confirms last2 = 1,000 pre-2558, NOT copied from the current era) -- near/second/third/fourth/fifth/last3 still unverified for this span, copied from nearest documented (current) era, approx",
   },
   {
     from: "2015-08-01",
