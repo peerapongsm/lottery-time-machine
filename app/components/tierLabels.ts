@@ -1,0 +1,30 @@
+import type { Tier } from "../../lib/era";
+
+// Thai display names for prize tiers + which ones are "big" enough to pause
+// the TimeMachine animation for a celebration overlay. UI-layer only.
+
+export const TIER_LABEL: Record<Tier, string> = {
+  first: "รางวัลที่ 1",
+  near: "รางวัลข้างเคียงรางวัลที่ 1",
+  second: "รางวัลที่ 2",
+  third: "รางวัลที่ 3",
+  fourth: "รางวัลที่ 4",
+  fifth: "รางวัลที่ 5",
+  front3: "เลขหน้า 3 ตัว",
+  last3: "เลขท้าย 3 ตัว",
+  last2: "เลขท้าย 2 ตัว",
+};
+
+export const UNDERGROUND_LABEL = "ใต้ดิน";
+
+// fifth and above (fifth/fourth/third/second/first/near) pause the timeline
+// for a celebration overlay; front3/last3/last2/underground are floating
+// pop notifications that don't interrupt playback.
+export const BIG_TIERS = new Set<Tier>(["fifth", "fourth", "third", "second", "first", "near"]);
+
+// Ledger.biggestHit.tier is a plain string — it's either a Tier or the
+// literal "underground" (see lib/simulate.ts). This covers both.
+export function labelForTier(tier: string): string {
+  if (tier === "underground") return UNDERGROUND_LABEL;
+  return TIER_LABEL[tier as Tier] ?? tier;
+}
