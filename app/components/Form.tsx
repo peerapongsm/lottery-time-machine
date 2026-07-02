@@ -192,7 +192,15 @@ export default function Form({ onStart }: { onStart: (input: SimInput) => void }
         nextErrors[`ug-${t}`] = "ใส่จำนวนเงินแทง";
         continue;
       }
+      if (!(Number.isFinite(f.rate) && f.rate > 0)) {
+        nextErrors[`ug-${t}`] = "อัตราจ่ายต้องมากกว่า 0";
+        continue;
+      }
       underground.push({ type: t, digits: f.digits, stake: f.stake, rate: f.rate });
+    }
+
+    if (!(Number.isFinite(startYear) && startYear >= OLDEST_CE_YEAR && startYear <= maxCeYear)) {
+      nextErrors.startYear = "เลือกปีที่เริ่มซื้อที่ถูกต้อง";
     }
 
     if (Object.keys(nextErrors).length > 0) {
@@ -324,6 +332,7 @@ export default function Form({ onStart }: { onStart: (input: SimInput) => void }
               </option>
             ))}
           </select>
+          {errors.startYear && <p className={styles.error}>{errors.startYear}</p>}
         </div>
 
         <p className={styles.summary}>
