@@ -73,3 +73,21 @@ describe("checkUnderground", () => {
     expect(checkUnderground(bet("bottom2", "56"), { date: "1995-01-16", first: "123456" } as Draw)).toBe(0);
   });
 });
+
+describe("7-digit era draws", () => {
+  const sevenDigit: Draw = { date: "1992-06-16", first: "4826531", last3: ["531", "888", "111", "222"], last2: "31" };
+
+  it("6-digit ticket never wins first on a 7-digit draw", () => {
+    expect(checkTicket("482653", sevenDigit).map(h => h.tier)).not.toContain("first");
+  });
+  it("tail tiers still pay on 7-digit draws", () => {
+    // "999531".slice(3) = "531" -> last3 hit; "999531".slice(4) = "31" -> also equals last2 "31"
+    const tiers = checkTicket("999531", sevenDigit).map(h => h.tier).sort();
+    expect(tiers).toEqual(["last2", "last3"]);
+  });
+  it("underground top2/top3 use last digits of a 7-digit first", () => {
+    expect(checkUnderground({ type: "top2", digits: "31", stake: 100, rate: 70 }, sevenDigit)).toBe(7000);
+    expect(checkUnderground({ type: "top3", digits: "531", stake: 100, rate: 450 }, sevenDigit)).toBe(45000);
+    expect(checkUnderground({ type: "tode3", digits: "135", stake: 100, rate: 100 }, sevenDigit)).toBe(10000);
+  });
+});

@@ -15,6 +15,7 @@ export function checkTicket(num: string, draw: Draw): Hit[] {
     const amt = era.amounts[tier];
     if (cond && amt !== undefined) hits.push({ tier, amount: amt });
   };
+  // 7-digit era (≤1994) draws never match a 6-digit ticket — tail tiers still checked
   add("first", draw.first === num);
   add("near", (draw.near ?? []).includes(num));
   add("second", (draw.second ?? []).includes(num));
@@ -33,9 +34,11 @@ export interface UndergroundBet { type: UgType; digits: string; stake: number; r
 const sortDigits = (s: string) => s.split("").sort().join("");
 
 export function checkUnderground(bet: UndergroundBet, draw: Draw): number {
-  const top3 = draw.first.slice(3);
+  // underground bets key off the LAST N digits of first prize regardless of
+  // era digit count (6-digit era vs 7-digit era pre-1995)
+  const top3 = draw.first.slice(-3);
   const hit =
-    bet.type === "top2" ? draw.first.slice(4) === bet.digits :
+    bet.type === "top2" ? draw.first.slice(-2) === bet.digits :
     bet.type === "bottom2" ? draw.last2 !== undefined && draw.last2 === bet.digits :
     bet.type === "top3" ? top3 === bet.digits :
     /* tode3 */ sortDigits(top3) === sortDigits(bet.digits) && top3 !== "" ;
