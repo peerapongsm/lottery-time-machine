@@ -7,6 +7,7 @@
 }
 
 .panel {
+  min-width: 0;
   border: 1px solid var(--brass-dim);
   border-radius: 16px;
   background: linear-gradient(180deg, var(--bg-panel-raised), var(--bg-panel));
@@ -34,7 +35,8 @@
 }
 
 .digitBox {
-  width: 15%;
+  flex: 1 1 0;
+  min-width: 0;
   max-width: 52px;
   aspect-ratio: 3 / 4;
   text-align: center;
@@ -210,6 +212,7 @@
 /* --- underground (illegal) section --- */
 
 .dangerPanel {
+  min-width: 0;
   border: 1px solid var(--danger-border);
   border-radius: 16px;
   background: var(--danger-bg);

@@ -30,6 +30,7 @@ body {
   color: var(--ink);
   background: var(--bg);
   font-family: var(--font-body);
+  overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image:
