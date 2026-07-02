@@ -1,0 +1,50 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.canvas {
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 1200 / 630;
+  border-radius: 14px;
+  border: 1px solid var(--brass-dim);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-dim);
+}
+
+.shareButton {
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #201404;
+  background: linear-gradient(180deg, var(--brass-bright), var(--brass));
+  box-shadow: 0 10px 26px rgba(212, 169, 74, 0.25);
+  transition: transform 0.05s;
+}
+
+.shareButton:active {
+  transform: translateY(1px);
+}
