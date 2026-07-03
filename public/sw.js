@@ -6,7 +6,7 @@
 // breaking the app until the cache is manually cleared. HTML navigations
 // are therefore always network-first, with the cached shell only as an
 // offline fallback.
-const CACHE_NAME = "ltm-v1";
+const CACHE_NAME = "ltm-v1x";
 
 // Resolves to the app's root ("<basePath>/"), which doubles as the offline
 // navigation fallback. Derived from this script's own URL so it works
