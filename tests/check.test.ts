@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { checkTicket, checkUnderground, nearNumbers, type Draw } from "../lib/check";
+import { checkTicket, nearNumbers, type Draw } from "../lib/check";
 
 const full: Draw = {
   date: "2025-06-16", first: "123456", near: ["123455", "123457"],
@@ -59,21 +59,6 @@ describe("checkTicket (early era, partial tiers)", () => {
   });
 });
 
-describe("checkUnderground", () => {
-  const bet = (type: any, digits: string) => ({ type, digits, stake: 100, rate: type.startsWith("top3") ? 450 : 70 });
-  it("top2 = last 2 of FIRST prize", () => expect(checkUnderground(bet("top2", "56"), full)).toBe(7000));
-  it("bottom2 = the last2 tier number", () => expect(checkUnderground(bet("bottom2", "56"), full)).toBe(7000));
-  it("top3 exact = last 3 of first prize", () => expect(checkUnderground(bet("top3", "456"), full)).toBe(45000));
-  it("tode3 = any permutation of last 3 of first prize", () => {
-    expect(checkUnderground({ type: "tode3", digits: "645", stake: 100, rate: 100 }, full)).toBe(10000);
-    expect(checkUnderground({ type: "tode3", digits: "999", stake: 100, rate: 100 }, full)).toBe(0);
-  });
-  it("miss pays 0", () => expect(checkUnderground(bet("top2", "99"), full)).toBe(0));
-  it("bottom2 absent tier (hypothetical) pays 0", () => {
-    expect(checkUnderground(bet("bottom2", "56"), { date: "1995-01-16", first: "123456" } as Draw)).toBe(0);
-  });
-});
-
 describe("7-digit era draws", () => {
   const sevenDigit: Draw = { date: "1992-06-16", first: "4826531", last3: ["531", "888", "111", "222"], last2: "31" };
 
@@ -84,10 +69,5 @@ describe("7-digit era draws", () => {
     // "999531".slice(3) = "531" -> last3 hit; "999531".slice(4) = "31" -> also equals last2 "31"
     const tiers = checkTicket("999531", sevenDigit).map(h => h.tier).sort();
     expect(tiers).toEqual(["last2", "last3"]);
-  });
-  it("underground top2/top3 use last digits of a 7-digit first", () => {
-    expect(checkUnderground({ type: "top2", digits: "31", stake: 100, rate: 70 }, sevenDigit)).toBe(7000);
-    expect(checkUnderground({ type: "top3", digits: "531", stake: 100, rate: 450 }, sevenDigit)).toBe(45000);
-    expect(checkUnderground({ type: "tode3", digits: "135", stake: 100, rate: 100 }, sevenDigit)).toBe(10000);
   });
 });

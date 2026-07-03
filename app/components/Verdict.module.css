@@ -80,21 +80,6 @@
   line-height: 1.7;
 }
 
-.breakdown {
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px dashed var(--brass-dim);
-}
-
-.breakdownTitle {
-  font-family: var(--font-display);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--brass);
-  margin-bottom: 8px;
-}
-
 .banner {
   padding: 14px 16px;
   border-radius: 12px;

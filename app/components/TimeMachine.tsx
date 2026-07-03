@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Ledger } from "../../lib/simulate";
 import { fmtBaht, toBE } from "../../lib/fmt";
 import { indexAtElapsed } from "../../lib/timeline";
-import { BIG_TIERS, TIER_LABEL, UNDERGROUND_LABEL } from "./tierLabels";
+import { BIG_TIERS, TIER_LABEL } from "./tierLabels";
 import styles from "./TimeMachine.module.css";
 
 interface Props {
@@ -74,9 +74,6 @@ export default function TimeMachine({ ledger, onDone }: Props) {
         }
         for (const h of ev.hits) {
           newPops.push({ id: popIdRef.current++, text: `${TIER_LABEL[h.tier]} +${fmtBaht(h.amount)}` });
-        }
-        if (ev.ugWon > 0) {
-          newPops.push({ id: popIdRef.current++, text: `${UNDERGROUND_LABEL} +${fmtBaht(ev.ugWon)}` });
         }
       }
 

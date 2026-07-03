@@ -93,19 +93,6 @@
   color: var(--brass);
 }
 
-.dangerSection {
-  border-color: var(--danger-border);
-  background: var(--danger-bg);
-}
-
-.sectionTitleDanger {
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--danger);
-}
-
 .bodyText {
   font-size: 13px;
   line-height: 1.7;

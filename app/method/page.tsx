@@ -186,21 +186,9 @@ export default function MethodPage() {
         </div>
       </section>
 
-      {/* 5. หวยใต้ดิน */}
-      <section className={`${styles.section} ${styles.dangerSection}`}>
-        <h2 className={styles.sectionTitleDanger}>5. หวยใต้ดิน</h2>
-        <p className={styles.bodyText}>
-          อัตราจ่ายที่ตั้งไว้ในฟอร์มเป็นค่าอ้างอิงทั่วไปเท่านั้น — <strong>ไม่มีแหล่งข้อมูลทางการ</strong>{" "}
-          เพราะเป็นการพนันนอกระบบ อัตราจริงต่างกันไปตามเจ้ามือแต่ละราย แก้ตัวเลขได้เองในฟอร์ม
-        </p>
-        <p className={styles.bodyText}>
-          หวยใต้ดิน<strong>ผิดกฎหมาย</strong> ส่วนนี้ของหวยจำลองมีไว้เพื่อการศึกษาเปรียบเทียบเท่านั้น
-        </p>
-      </section>
-
-      {/* 6. Disclaimers */}
+      {/* 5. Disclaimers */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>6. ข้อจำกัดความรับผิดชอบ</h2>
+        <h2 className={styles.sectionTitle}>5. ข้อจำกัดความรับผิดชอบ</h2>
         <ul className={styles.list}>
           <li>หวยจำลอง<strong>ไม่ใช่เครื่องมือแนะนำเลข</strong> ไม่มีฟีเจอร์ "เลขฮอต" หรือเลขที่ออกบ่อย</li>
           <li>ผลลัพธ์ที่เห็นคือการจำลองจาก<strong>เลขที่คุณกรอกเอง</strong> เทียบกับผลรางวัลจริงในอดีต — ไม่ใช่สถิติว่าเลขไหนเคยถูกจริง</li>

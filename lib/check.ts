@@ -27,20 +27,3 @@ export function checkTicket(num: string, draw: Draw): Hit[] {
   add("last2", draw.last2 !== undefined && draw.last2 === num.slice(4));
   return hits;
 }
-
-export type UgType = "top2" | "bottom2" | "top3" | "tode3";
-export interface UndergroundBet { type: UgType; digits: string; stake: number; rate: number; }
-
-const sortDigits = (s: string) => s.split("").sort().join("");
-
-export function checkUnderground(bet: UndergroundBet, draw: Draw): number {
-  // underground bets key off the LAST N digits of first prize regardless of
-  // era digit count (6-digit era vs 7-digit era pre-1995)
-  const top3 = draw.first.slice(-3);
-  const hit =
-    bet.type === "top2" ? draw.first.slice(-2) === bet.digits :
-    bet.type === "bottom2" ? draw.last2 !== undefined && draw.last2 === bet.digits :
-    bet.type === "top3" ? top3 === bet.digits :
-    /* tode3 */ sortDigits(top3) === sortDigits(bet.digits) && top3 !== "" ;
-  return hit ? bet.stake * bet.rate : 0;
-}

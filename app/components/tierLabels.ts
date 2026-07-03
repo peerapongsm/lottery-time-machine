@@ -15,16 +15,11 @@ export const TIER_LABEL: Record<Tier, string> = {
   last2: "เลขท้าย 2 ตัว",
 };
 
-export const UNDERGROUND_LABEL = "ใต้ดิน";
-
 // fifth and above (fifth/fourth/third/second/first/near) pause the timeline
-// for a celebration overlay; front3/last3/last2/underground are floating
+// for a celebration overlay; front3/last3/last2 are floating
 // pop notifications that don't interrupt playback.
 export const BIG_TIERS = new Set<Tier>(["fifth", "fourth", "third", "second", "first", "near"]);
 
-// Ledger.biggestHit.tier is a plain string — it's either a Tier or the
-// literal "underground" (see lib/simulate.ts). This covers both.
 export function labelForTier(tier: string): string {
-  if (tier === "underground") return UNDERGROUND_LABEL;
   return TIER_LABEL[tier as Tier] ?? tier;
 }

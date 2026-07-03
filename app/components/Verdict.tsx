@@ -38,7 +38,6 @@ export default function Verdict({ ledger, input, series, onReset }: Props) {
     return out;
   }, [ledger.events, series]);
 
-  const hasUnderground = ledger.underground.spent > 0;
   const showEarlyEraNote = ledger.firstDrawDate !== null && ledger.firstDrawDate < FULL_DATA_START;
   const netNegative = ledger.net < 0;
 
@@ -70,17 +69,6 @@ export default function Verdict({ ledger, input, series, onReset }: Props) {
             ครั้งใหญ่สุด: {labelForTier(ledger.biggestHit.tier)} {fmtBaht(ledger.biggestHit.amount)} (งวด{" "}
             {toBE(ledger.biggestHit.date)})
           </p>
-        )}
-        {hasUnderground && (
-          <div className={styles.breakdown}>
-            <p className={styles.breakdownTitle}>สลาก vs ใต้ดิน</p>
-            <p className={styles.line}>
-              สลาก: จ่าย {fmtBaht(ledger.lottery.spent)} → ได้ {fmtBaht(ledger.lottery.won)}
-            </p>
-            <p className={styles.line}>
-              ใต้ดิน: จ่าย {fmtBaht(ledger.underground.spent)} → ได้ {fmtBaht(ledger.underground.won)}
-            </p>
-          </div>
         )}
       </section>
 
