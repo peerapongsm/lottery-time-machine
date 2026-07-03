@@ -4,11 +4,6 @@ import Script from "next/script";
 import RegisterSW from "./components/RegisterSW";
 import "./globals.css";
 
-// Static export + basePath: metadata URLs (manifest, icons) are not
-// rewritten for basePath at build time, so they're prefixed by hand here —
-// same reasoning as page.tsx's fetch calls.
-const BASE_PATH = "/lottery-time-machine";
-
 const display = Chakra_Petch({
   variable: "--font-display",
   subsets: ["thai", "latin"],
@@ -25,11 +20,11 @@ export const metadata: Metadata = {
   title: "หวยจำลอง — เครื่องย้อนเวลาซื้อหวย",
   description:
     "ย้อนเวลาไปซื้อหวยเลขเดิมทุกงวดตั้งแต่อดีตจนถึงวันนี้ แล้วดูว่าจะได้หรือเสียเท่าไร",
-  manifest: `${BASE_PATH}/manifest.json`,
+  manifest: "/manifest.json",
   icons: {
     icon: [
-      { url: `${BASE_PATH}/icons/icon-192.png`, sizes: "192x192", type: "image/png" },
-      { url: `${BASE_PATH}/icons/icon-512.png`, sizes: "512x512", type: "image/png" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
   },
 };

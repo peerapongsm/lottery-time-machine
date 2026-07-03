@@ -6,6 +6,21 @@
   gap: 20px;
 }
 
+@media (min-width: 1024px) {
+  .form {
+    max-width: 960px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 24px;
+  }
+
+  .startButton {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
 .panel {
   min-width: 0;
   border: 1px solid var(--brass-dim);

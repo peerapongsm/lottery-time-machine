@@ -1,7 +1,7 @@
 :root {
   --bg: #0b0906;
-  --bg-panel: #171209;
-  --bg-panel-raised: #1e1710;
+  --bg-panel: #201811;
+  --bg-panel-raised: #2b2015;
   --brass: #d4a94a;
   --brass-bright: #f2cc72;
   --brass-dim: #6f5a2a;
@@ -42,6 +42,17 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 
 a {

@@ -82,7 +82,7 @@ export default function Verdict({ ledger, input, series, onReset }: Props) {
       )}
 
       {dcaCards.length > 0 && (
-        <section className={styles.panel}>
+        <section className={`${styles.panel} ${styles.dcaPanel}`}>
           <p className={styles.legend}>ถ้าเอาเงินหวยไป DCA แทน</p>
           <div className={styles.dcaGrid}>
             {dcaCards.map((c) => (

@@ -10,14 +10,10 @@ import type { Draw } from "../lib/check";
 import { ASSET_KEYS, type AssetKey, type SeriesData } from "./components/types";
 import styles from "./page.module.css";
 
-// Static export + basePath: fetches must be rooted at the configured
-// basePath (see next.config.ts) since there's no server to rewrite paths.
-const BASE_PATH = "/lottery-time-machine";
-
 type Phase = "form" | "loading" | "error" | "animating" | "verdict";
 
 async function fetchJson<T>(path: string): Promise<T> {
-  const res = await fetch(`${BASE_PATH}${path}`);
+  const res = await fetch(path);
   if (!res.ok) throw new Error(`failed to fetch ${path}: ${res.status}`);
   return res.json() as Promise<T>;
 }

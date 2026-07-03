@@ -12,7 +12,7 @@ interface Props {
   dcaCards: DcaCard[];
 }
 
-const CARD_URL = "peerapongsm.github.io/lottery-time-machine";
+const CARD_URL = "lottery-time-machine.peerapongsm.dev";
 const W = 1200;
 const H = 630;
 

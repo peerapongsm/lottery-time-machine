@@ -7,6 +7,34 @@
   gap: 18px;
 }
 
+@media (min-width: 1024px) {
+  .wrap {
+    max-width: 960px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 18px;
+  }
+
+  .wrap > * {
+    grid-column: 1 / -1;
+  }
+
+  .hero {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .dcaPanel {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .resetButton {
+    justify-self: center;
+  }
+}
+
 .hero {
   text-align: center;
   padding: 28px 20px;
